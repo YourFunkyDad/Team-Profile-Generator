@@ -1,0 +1,28 @@
+{
+    "name": "team_profile_generator",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YourFunkyDad/Team-Profile-Generator"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "hhttps://github.com/YourFunkyDad/Team-Profile-Generator/issues"
+    },
+    "homepage": "https://github.com/YourFunkyDad/Team-Profile-Generator#readme",
+    "devDependencies": {
+        "jest": "^27.5.1"
+    },
+    "dependencies": {
+        "inquirer": "^8.2.2"
+    }
+}
