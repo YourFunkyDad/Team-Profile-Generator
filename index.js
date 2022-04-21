@@ -74,10 +74,11 @@ Team.prototype.addTeam = function() {
 Team.prototype.addEmployee = function() {
     inquirer.prompt(
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'add',
             message: 'Choose your employee',
             choices: ['Engineer', 'Intern', 'Quit'],
+            default: 0,
             validate: addInput => {
                 if (addInput) {
                     return true;
@@ -91,8 +92,8 @@ Team.prototype.addEmployee = function() {
     .then(({ add }) => {
         if (add[0] === 'Engineer') {
             this.addEngineer();
-        } else if (add[0] === 'Intern') {
-            console.log('Intern');
+        } else if (add === 'Intern') {
+            this.addIntern();
         } else {
             console.log('Quit');
         }
@@ -162,7 +163,69 @@ Team.prototype.addEngineer = function() {
             this.addEmployee();
         });
 };
-
+// Intern
+Team.prototype.addIntern = function() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: 'Enter employee name',
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter employee name');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Enter the employee ID',
+                validate: idInput => {
+                    if (idInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter employee ID!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter employee email address',
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter employee email address');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: 'Enter Employee School Name',
+                validate: githubInput => {
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log('Enter School Name')
+                        return false;
+                    }
+                }
+            }
+        ])
+        .then(({ name, id, email, school }) => {
+            this.interns.push(new Intern(name, id, email, school));
+            console.log(this);
+            this.addEmployee();
+        });
+};
 
 
 new Team().addTeam();
